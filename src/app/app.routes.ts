@@ -1,3 +1,4 @@
+import { AlbumComponent } from './album/album.component';
 import { ArtistComponent } from './artist/artist.component';
 import { AboutComponent } from './about/about.component';
 import { SearchComponent } from './search/search.component';
@@ -9,7 +10,9 @@ const router: Routes = [
     { path: '', redirectTo: 'search', pathMatch: 'full' },
     { path: 'search', component: SearchComponent },
     { path: 'about', component: AboutComponent },
-    { path: 'artist/:id', component: ArtistComponent }
+    { path: 'artist/:id', component: ArtistComponent },
+    { path: 'album/:id', component: AlbumComponent },
+
 ];
 
 

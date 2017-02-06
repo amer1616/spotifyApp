@@ -1,11 +1,33 @@
 <div class="row">
-  <div class="col m10">
-    <div class="card-panel grey lighten-3">
-      <header>
-        <div *ngIf="images.length > 0">
-          <img class="circle responsive-img" src="{{artist.images[0].url}}" alt="" style="height: 200px;">
+  <div class="col m12 offset-m0">
+    <div class="card horizontal grey lighten-3">
+      <div *ngIf="images.length > 0">
+        <img class="circle responsive-img" src="{{artist.images[0].url}}" alt="" style="height: 100px;">
+      </div>
+      <div class="card-content">
+        <span class="card-title"><h3>{{artist.name}}</h3></span>
+        <p *ngIf="genres.length> 0">
+          <strong>Genres:</strong> <span *ngFor="let genre of genres">{{genre}}</span>
+        </p>
+      </div>
+      <div class="divider"></div>
+    </div>
+    <div class="row">
+      <div *ngFor="let album of albums">
+        <div class="col s12 m3">
+          <div class="card">
+            <div class="card-image">
+              <img class="responsive-img" src="{{album.images[0].url}}" alt="">
+            </div>
+            <div class="card-content">
+              <span class="card-title">{{album.name}}</span>
+            </div>
+            <div class="card-action center-align">
+              <a routerLink="/album/{{album.id}}">Album Details</a>
+            </div>
+          </div>
         </div>
-      </header>
+      </div>
     </div>
   </div>
 </div>

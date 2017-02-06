@@ -14,20 +14,25 @@ export class ArtistComponent implements OnInit {
   artist: Artist[] = [];
   albums: Album[] = [];
   images: any[] = [];
+  genres: string[] = [];
+
   constructor(private sps: SpotifyService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.route.params
       .map(params => params['id'])
-      .subscribe(
-      (id) => {
+      .subscribe((id) => {
         this.sps.getArtist(id)
           .subscribe(artist => {
             this.artist = artist;
             this.images = artist.images;
+            this.genres = artist.genres;
           });
-      }
-      );
+        this.sps.getAlbums(id)
+          .subscribe(albums => {
+            this.albums = albums.items;
+          });
+      });
   }
 
 }
